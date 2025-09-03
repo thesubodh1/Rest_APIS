@@ -8,11 +8,11 @@ from rest_framework import mixins,generics
 # Create your views here.
 
 # creating class based views with generics
-class Employees(generics.ListAPIView,generics.CreateAPIView):
+class Employees(generics.ListCreateAPIView):
    queryset = Employee.objects.all()
    serializer_class = EmployeeSerializer
     
-class EmployeesDetails(generics.RetrieveAPIView,generics.UpdateAPIView,generics.DestroyAPIView):
+class EmployeesDetails(generics.RetrieveUpdateDestroyAPIView):
    queryset = Employee.objects.all()
    serializer_class = EmployeeSerializer
    lookup_field = "pk"
