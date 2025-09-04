@@ -8,3 +8,10 @@ class Employee(models.Model):
 
     def __str__(self):
         return f"{self.employee_id}, {self.employee_name}"
+    
+class Remarks(models.Model):
+    employee = models.ForeignKey(Employee,on_delete=models.CASCADE,related_name="remarks")
+    remark = models.TextField()
+
+    def __str__(self):
+        return f"{self.employee}, {self.remark}"
