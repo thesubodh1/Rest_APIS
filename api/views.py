@@ -7,7 +7,7 @@ from employees.serializers import RemarksSerializer,EmployeeSerializer
 from .pagination import CustomPagination
 from rest_framework.filters import SearchFilter, OrderingFilter
 from employees.filters import EmployeeFilter
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter,OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
@@ -19,8 +19,10 @@ class Employees(generics.ListCreateAPIView):
    #  pagination_class = CustomPagination
     # filterset_fields = ['employee_name',"employees_position"]
     filterset_class = EmployeeFilter
-    filter_backends = [SearchFilter, DjangoFilterBackend] #  for search
+    filter_backends = [SearchFilter, DjangoFilterBackend,OrderingFilter] #  for search
     search_fields = ["employee_name"] # can add multiple
+    ordering_fields = ["employee_id"]
+    
 
 
 class RemarksView(generics.ListCreateAPIView):
